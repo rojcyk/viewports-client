@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "viewports-client",
+  "version": "0.0.1",
+  "description": "TBD",
+  "author": "Denis Rojcyk <denis@rojcyk.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rojcyk/viewports-client.git"
+  },
+  "scripts": {
+
+  },
+  "devDependencies": {
+
+  }
+}
