@@ -181,3 +181,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/osx,node,linux,windows
 .vscode/settings.json
+manifest.json
