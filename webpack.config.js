@@ -17,8 +17,8 @@ module.exports = (e, argv) => {
     devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
     entry: {
-      ui: './src/figma/ui/ui.tsx', // The entry point for your UI code
-      code: './src/figma/code/code.ts' // The entry point for your plugin code
+      ui: './src/ui/ui.tsx', // The entry point for your UI code
+      code: './src/code/code.ts' // The entry point for your plugin code
     },
 
     module: {
@@ -53,7 +53,7 @@ module.exports = (e, argv) => {
     plugins: [
       new webpack.DefinePlugin(envKeys), // This sets up env variables
       new HtmlWebpackPlugin({
-        template: './src/shared/ui.html',
+        template: './src/ui/ui.html',
         filename: 'ui.html',
         inlineSource: '.(js)$',
         chunks: ['ui']
