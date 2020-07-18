@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const path = require('path')
 const dotenv = require('dotenv')
 
@@ -58,9 +59,8 @@ module.exports = (e, argv) => {
         inlineSource: '.(js)$',
         chunks: ['ui']
       }),
-      new ScriptExtHtmlWebpackPlugin({
-        inline: /\.js$/,
-      })
+      new HtmlWebpackInlineSourcePlugin()
+      // new ScriptExtHtmlWebpackPlugin()
     ]
   }
 }
