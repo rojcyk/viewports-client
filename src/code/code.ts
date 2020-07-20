@@ -28,8 +28,17 @@ const main = async () => {
     viewports
   }
 
-  /* Finally, sending the actual data over to the client */
-  io.send(APP_START, initData)
+  /* When launching the plugin, figma sets a command 
+   * if it standard launch, the command is empty
+   * if it is launched from the edit button, it says "edit"
+   */
+  switch (figma.command) {
+    /* so far, we don't differentiate */
+    default:
+      /* Finally, sending the actual data over to the client */
+      io.send(APP_START, initData)
+      break
+  }
 
   /* We are listening for events that might come from the plugin, such as update */
   updateListener()
