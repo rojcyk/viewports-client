@@ -87,7 +87,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       console.log('[Viewports] Data up to date')
     }
 
-    console.log(`[Viewports]: Current app state:`)
+    console.log(`[Viewports] Current app state:`)
     console.log(this.state)
   }
 

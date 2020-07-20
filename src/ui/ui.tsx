@@ -19,7 +19,7 @@ const main = async () => {
   /* We are waiting from data coming from the code part of the app */ 
   const data = (await io.async(APP_START))
 
-  console.log(`[Viewports]: App props:`)
+  console.log(`[Viewports] App props:`)
   console.log(data)
 
   /* We are looking for a node (html element) with an ID */
