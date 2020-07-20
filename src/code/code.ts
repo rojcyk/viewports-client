@@ -3,6 +3,7 @@
 import io from 'figmaio/code'
 import dayjs from 'dayjs'
 import { LAST_CHECK, VIEWPORTS } from '../constants/storageProps'
+import { APP_START } from '../constants/events'
 import updateListener from './updateListener'
 
 const shouldCheck = async (): Promise<boolean> => {
@@ -44,7 +45,7 @@ const main = async () => {
   }
 
   /* Finally, sending the actual data over to the client */
-  io.send('start', initData)
+  io.send(APP_START, initData)
 
   /* We are listening for events that might come from the plugin, such as update */
   updateListener()

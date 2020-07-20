@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import io from 'figmaio/ui'
 
+import { APP_START } from '../constants/events'
 import App from './app'
 
 // ******************** //
@@ -16,7 +17,7 @@ declare function require(path: string): any
 
 const main = async () => {
   /* We are waiting from data coming from the code part of the app */ 
-  const data = (await io.async('start'))
+  const data = (await io.async(APP_START))
 
   console.log(`[Viewports]: App props:`)
   console.log(data)
