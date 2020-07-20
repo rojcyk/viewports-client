@@ -26,7 +26,7 @@ const main = async () => {
   const htmlID = 'react-page'
   const node = document.getElementById(htmlID)
 
-  if (!node) throw new Error(`Node ${htmlID} does not exists `)
+  if (!node) throw new Error(`Node with an ID: [${htmlID}] does not exists. You should add it to your HTML file.`)
 
   /* If found, we add content to it */
   ReactDOM.render(
