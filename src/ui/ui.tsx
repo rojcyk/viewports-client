@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom'
 import io from 'figmaio/ui'
 
 import { APP_START } from '../constants/events'
-import App from './app'
+import App from '../app/app'
 
 // ******************** //
 // Figma hacks
