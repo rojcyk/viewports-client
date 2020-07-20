@@ -1,0 +1,1 @@
+export const VIEWPORTS_URL = 'https://viewports-production.herokuapp.com/api'
