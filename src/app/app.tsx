@@ -5,10 +5,11 @@ import Rollbar from 'rollbar'
 import styled from 'styled-components'
 
 import downloadViewports from '../helpers/downloadViewports'
-import { DATA_UPDATE, REGION_UPDATE } from '../constants/events'
+import { DATA_UPDATE, REGION_UPDATE, DISPLAY_UPDATE } from '../constants/events'
 import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
-import RegionSelect from './region/index'
+import { Regions } from './regions/index'
+import { Viewport } from './viewport/index'
 
 // ******************** //
 // APP MAIN CLASS
@@ -42,7 +43,13 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
   // ************************************************ //
 
   displayTrigger = async (e: React.MouseEvent): Promise<void> => {
-    console.log('display trigger')
+    const width = e.currentTarget.getAttribute('width')
+    const height = e.currentTarget.getAttribute('height')
+  
+    io.send(DISPLAY_UPDATE, {
+      width: width ? parseInt(width) : null,
+      height: height ? parseInt(height) : null
+    })
   }
 
   // ************************************************ //
@@ -64,7 +71,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
   // ************************************************ //
 
   platformTrigger = async (e: React.MouseEvent): Promise<void> => {
-    console.log('platform trigger')
+    // console.log('platform trigger')
   }
 
   // ************************************************ //
@@ -135,12 +142,12 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       <Main>
         <GlobalStyles />
 
-        <RegionSelect
+        <Regions
           trigger={this.regionTrigger}
           region={this.state.region}
         />
 
-        <p>Hello world!</p>
+        <Viewport width={360} height={640} trigger={this.displayTrigger} index={1} osVisible={true} />
 
         <UpdateBanner update={this.state.update} />
       </Main>
