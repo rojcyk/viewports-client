@@ -40,15 +40,15 @@ const MarketShare = styled.span`
 export const Viewport = (props: {
   width: number
   height: number
-  index: number
+  key: number
   trigger: any
   osVisible: boolean
+  share: string
 }) => {
   const os = selectOS(props.width, props.height)
 
   return (
     <DisplayStyle
-      key={props.index}
       width={props.width}
       height={props.height}
       onClick={props.trigger}
@@ -60,7 +60,7 @@ export const Viewport = (props: {
 
       {props.osVisible && (<OSBadge os={os} />)}
 
-      <MarketShare>1%</MarketShare>
+      <MarketShare>{props.share}%</MarketShare>
     </DisplayStyle>
   )
 }
