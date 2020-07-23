@@ -2,7 +2,7 @@ declare namespace Client {
 
   type RegionCode = 'ww' | 'af' | 'as' | 'eu' | 'oc' | 'na' | 'sa'
   type PlatformCode = 'mobile' | 'tablet' | 'desktop'
-  type LoadingState = 'init' | 'updating' | 'done' | 'error'
+  type LoadingState = 'init' | 'updating' | 'done' | 'error' | 'finished'
 
   type Viewport = {
     share: string
@@ -23,11 +23,13 @@ declare namespace Client {
   type InitData = {
     cacheValid: boolean
     viewports: ViewportsData
+    region: RegionCode | null
   }
 
   type AppState = {
     viewports: ViewportsData,
     cacheValid: boolean,
-    update: LoadingState
+    update: LoadingState,
+    rollbar: import("rollbar")
   }
 }

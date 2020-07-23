@@ -1,12 +1,24 @@
 import * as React from 'react'
 import dayjs from 'dayjs'
 import io from 'figmaio/ui'
+import Rollbar from 'rollbar'
+import styled from 'styled-components'
+
 import downloadViewports from '../helpers/downloadViewports'
 import { DATA_UPDATE } from '../constants/events'
+import { GlobalStyles } from './globalStyles'
+import { UpdateBanner } from './updateBanner'
+import Continents from './continetSelect/index'
 
 // ******************** //
 // APP MAIN CLASS
 // ******************** //
+
+const Main = styled.main`
+  position: relative;
+  width: 100%;
+  height: 100%;
+` 
 
 export default class App extends React.Component<Client.InitData, Client.AppState> {
   public constructor(props: Client.InitData) {
@@ -16,6 +28,11 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       viewports: props.viewports,
       cacheValid: props.cacheValid,
       update: 'init',
+      rollbar: new Rollbar({
+        accessToken: process.env.ROLLBAR_TOKEN,
+        captureUncaught: true,
+        captureUnhandledRejections: true,
+      })
     }
   }
 
@@ -62,14 +79,22 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       console.log('[Viewports] Outdated ...')
       console.log('[Viewports] Downloading new data ...')
 
+      await new Promise((resolve): any => setTimeout(resolve, 500))
+
       this.setState({ update: 'updating' })
 
+      await new Promise((resolve): any => setTimeout(resolve, 1500))
+
       const newViewportsResponse = await downloadViewports()
+
+      this.setState({ update: 'done' })
+
+      await new Promise((resolve): any => setTimeout(resolve, 1000))
 
       if (newViewportsResponse.status === 200) {
         this.setState({
           cacheValid: true,
-          update: 'done',
+          update: 'finished',
           viewports: newViewportsResponse.data.data as Client.ViewportsData
         })
 
@@ -86,6 +111,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
     } else {
       console.log('[Viewports] Data up to date')
     }
+    
 
     console.log(`[Viewports] Current app state:`)
     console.log(this.state)
@@ -96,10 +122,21 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
   // ************************************************ //
 
   public render(): React.ReactNode {
+    // this.state.rollbar.info('react test log')
+
     return (
-      <div>
-        Hello world!
-      </div>
+      <Main>
+        <GlobalStyles />
+
+        <Continents
+          trigger={this.continentTrigger}
+          continent='ww'
+        />
+
+        <p>Hello world!</p>
+
+        <UpdateBanner update={this.state.update} />
+      </Main>
     )
   }
 }
