@@ -5,8 +5,9 @@ export default (): void => {
   io.on(
     DISPLAY_UPDATE,
     async (dimensions: { width: number; height: number }): Promise<void> => {
-      console.log(dimensions)
       const selection = figma.currentPage.selection
+
+      console.log(`[Viewports] Resizing to ${dimensions.width}x${dimensions.height}`)
 
       if (selection.length > 0) {
         selection.forEach(el => {
