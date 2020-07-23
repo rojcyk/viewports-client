@@ -1,10 +1,10 @@
 import io from 'figmaio/code'
 
-import { VIEWPORTS } from '../constants/storageProps'
+import { VIEWPORTS, REGION } from '../constants/storageProps'
 import { APP_START } from '../constants/events'
+
 import updateListener from './updateListener'
 import shouldCheck from './shouldCheck'
-
 
 const main = async () => {
   figma.showUI(__html__, {
@@ -14,6 +14,9 @@ const main = async () => {
 
   /* We are getting the data saved in Figma client */
   const viewports = await figma.clientStorage.getAsync(VIEWPORTS)
+
+  /* We are getting the data saved in Figma client */
+  const region = await figma.clientStorage.getAsync(REGION)
 
   /* We are checking whether it was before 24 that we last opened the plugin */
   const shouldCheckCache = await shouldCheck()
@@ -25,7 +28,8 @@ const main = async () => {
   /* Initial data construction */
   const initData: Client.InitData = {
     cacheValid,
-    viewports
+    viewports,
+    region
   }
 
   /* When launching the plugin, figma sets a command 
