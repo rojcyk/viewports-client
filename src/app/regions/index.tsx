@@ -28,7 +28,7 @@ interface RegionsProps extends SectionProps {
   region: Client.RegionCode
 }
 
-export default class Regions extends Section<RegionsProps> {
+export class Regions extends Section<RegionsProps> {
   public background(): string {
     return colors.bg.secondary
   }
