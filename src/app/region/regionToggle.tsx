@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { continentName } from './index'
+import { regionName } from './index'
 import { Arrow } from '../icons/arrow'
 import { colors, animationSpeed } from '../../constants/tokens'
 
@@ -9,7 +9,7 @@ import { colors, animationSpeed } from '../../constants/tokens'
 // Continent Dropdown Buttson
 ////////////////////////////
 
-const ConinentToogleStyle = styled.div<{
+const RegionToogleStyle = styled.div<{
   expanded: boolean
 }>`
   color: ${colors.ink.secondary};
@@ -36,7 +36,7 @@ const ConinentToogleStyle = styled.div<{
   // }
 `
 
-export const ContinentToogle = (props: {
+export const RegionToogle = (props: {
   expanded: boolean
   selection: Client.RegionCode
   customAction: any
@@ -46,16 +46,16 @@ export const ContinentToogle = (props: {
   if (props.expanded) {
     label = 'Pick location ...'
   } else {
-    label = continentName(props.selection)
+    label = regionName(props.selection)
   }
 
   return (
-    <ConinentToogleStyle
+    <RegionToogleStyle
       expanded={props.expanded}
       onClick={props.customAction}
     >
       <Arrow expanded={props.expanded} />
       {label}
-    </ConinentToogleStyle>
+    </RegionToogleStyle>
   )
 }

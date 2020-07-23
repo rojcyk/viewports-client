@@ -5,10 +5,10 @@ import Rollbar from 'rollbar'
 import styled from 'styled-components'
 
 import downloadViewports from '../helpers/downloadViewports'
-import { DATA_UPDATE } from '../constants/events'
+import { DATA_UPDATE, REGION_UPDATE } from '../constants/events'
 import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
-import Continents from './continetSelect/index'
+import RegionSelect from './region/index'
 
 // ******************** //
 // APP MAIN CLASS
@@ -28,6 +28,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       viewports: props.viewports,
       cacheValid: props.cacheValid,
       update: 'init',
+      region: props.region ? props.region : 'ww',
       rollbar: new Rollbar({
         accessToken: process.env.ROLLBAR_TOKEN,
         captureUncaught: true,
@@ -48,8 +49,14 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
   // Function that handles press on a Continent item.
   // ************************************************ //
 
-  continentTrigger = (e: React.MouseEvent): void => {
-    console.log('continent trigger')
+  regionTrigger = (e: React.MouseEvent): void => {
+    const value = e.currentTarget.attributes.getNamedItem('value')
+
+    if (value) {
+      const tmpValue = value.value as Client.RegionCode
+      this.setState({ region: tmpValue })
+      io.send(REGION_UPDATE, tmpValue)
+    }
   }
 
   // ************************************************ //
@@ -128,9 +135,9 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       <Main>
         <GlobalStyles />
 
-        <Continents
-          trigger={this.continentTrigger}
-          continent='ww'
+        <RegionSelect
+          trigger={this.regionTrigger}
+          region={this.state.region}
         />
 
         <p>Hello world!</p>

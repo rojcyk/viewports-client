@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { continentName } from './index'
+import { regionName } from './index'
 import { colors } from '../../constants/tokens'
 
 /////////////////////
@@ -27,7 +27,7 @@ const togglePosition = (props: { expanded: boolean }): string =>
 const toggleVisibility = (props: { expanded: boolean }): string =>
   props.expanded ? 'visible' : 'hidden'
 
-const ContinentSelectionStyle = styled.ul<{
+const RegionSelectionStyle = styled.ul<{
   expanded: boolean
 }>`
   transition: all 300ms ease-out;
@@ -45,7 +45,7 @@ const ContinentSelectionStyle = styled.ul<{
   top: ${() => togglePosition};
   visibility: ${() => toggleVisibility};
 `
-const ContinentSelectionItemStyle = styled.li<{
+const RegionSelectionItemStyle = styled.li<{
   active: boolean
 }>`
   color: ${props => (props.active ? colors.cta : colors.ink.primary)};
@@ -62,33 +62,33 @@ const ContinentSelectionItemStyle = styled.li<{
   }
 `
 
-export const ContinentSelection = (props: {
+export const RegionSelection = (props: {
   expanded: boolean
   trigger: any
-  selectedContinent: Client.RegionCode
+  selectedRegion: Client.RegionCode
 }) => {
   const listItems = continentsList.map(
-    (continent: Client.RegionCode, i: number) => {
+    (region: Client.RegionCode, i: number) => {
       let active = false
 
-      if (props.selectedContinent === continent) active = true
+      if (props.selectedRegion === region) active = true
 
       return (
-        <ContinentSelectionItemStyle
+        <RegionSelectionItemStyle
           key={i}
-          value={continent}
+          value={region}
           onClick={props.trigger}
           active={active}
         >
-          {continentName(continent)}
-        </ContinentSelectionItemStyle>
+          {regionName(region)}
+        </RegionSelectionItemStyle>
       )
     },
   )
 
   return (
-    <ContinentSelectionStyle expanded={props.expanded}>
+    <RegionSelectionStyle expanded={props.expanded}>
       {listItems}
-    </ContinentSelectionStyle>
+    </RegionSelectionStyle>
   )
 }

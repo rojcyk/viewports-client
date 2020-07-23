@@ -30,6 +30,7 @@ declare namespace Client {
     viewports: ViewportsData,
     cacheValid: boolean,
     update: LoadingState,
+    region: RegionCode,
     rollbar: import("rollbar")
   }
 }

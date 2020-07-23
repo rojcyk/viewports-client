@@ -4,6 +4,7 @@ import { VIEWPORTS, REGION } from '../constants/storageProps'
 import { APP_START } from '../constants/events'
 
 import updateListener from './updateListener'
+import regionListener from './regionListener'
 import shouldCheck from './shouldCheck'
 
 const main = async () => {
@@ -46,6 +47,7 @@ const main = async () => {
 
   /* We are listening for events that might come from the plugin, such as update */
   updateListener()
+  regionListener()
 }
 
 main()

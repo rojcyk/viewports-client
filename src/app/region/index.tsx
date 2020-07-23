@@ -1,12 +1,12 @@
 import * as React from 'react'
 
 import { Section, SectionProps } from '../section'
-import { ContinentToogle } from './continentToggle'
-import { ContinentSelection } from './continentSelection'
+import { RegionToogle } from './regionToggle'
+import { RegionSelection } from './regionSelection'
 import { colors } from '../../constants/tokens'
 
-export const continentName = (continent: Client.RegionCode): string => {
-  switch (continent) {
+export const regionName = (region: Client.RegionCode): string => {
+  switch (region) {
     case 'ww':
       return 'World wide'
     case 'af':
@@ -24,20 +24,20 @@ export const continentName = (continent: Client.RegionCode): string => {
   }
 }
 
-interface ContinentsProps extends SectionProps {
-  continent: Client.RegionCode
+interface RegionsProps extends SectionProps {
+  region: Client.RegionCode
 }
 
-export default class Continents extends Section<ContinentsProps> {
+export default class Regions extends Section<RegionsProps> {
   public background(): string {
     return colors.bg.secondary
   }
 
   public renderToggle(): React.ReactNode {
     return (
-      <ContinentToogle
+      <RegionToogle
         expanded={this.state.expanded}
-        selection={this.props.continent}
+        selection={this.props.region}
         customAction={this.toogleExpand}
       />
     )
@@ -45,8 +45,8 @@ export default class Continents extends Section<ContinentsProps> {
 
   public renderContent(): React.ReactNode {
     return (
-      <ContinentSelection
-        selectedContinent={this.props.continent}
+      <RegionSelection
+        selectedRegion={this.props.region}
         expanded={this.state.expanded}
         trigger={this.selectionPress}
       />
