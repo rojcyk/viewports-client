@@ -9,7 +9,9 @@ import { DATA_UPDATE, REGION_UPDATE, DISPLAY_UPDATE } from '../constants/events'
 import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
 import { Regions } from './regions/index'
-import { Viewport } from './viewport/index'
+import { Platform } from './platform/index'
+import { GoPro } from './gopro'
+import { GoproBanner } from './goproModal'
 
 // ******************** //
 // APP MAIN CLASS
@@ -19,7 +21,7 @@ const Main = styled.main`
   position: relative;
   width: 100%;
   height: 100%;
-` 
+`
 
 export default class App extends React.Component<Client.InitData, Client.AppState> {
   public constructor(props: Client.InitData) {
@@ -28,6 +30,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
     this.state = {
       viewports: props.viewports,
       cacheValid: props.cacheValid,
+      showGoproModal: false,
       update: 'init',
       region: props.region ? props.region : 'ww',
       rollbar: new Rollbar({
@@ -36,6 +39,14 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
         captureUnhandledRejections: true,
       })
     }
+  }
+
+  showModal = () => {
+    this.setState({ showGoproModal: true });
+  };
+
+  hideModal = () => {
+    this.setState({ showGoproModal: false });
   }
 
   // ************************************************ //
@@ -138,18 +149,46 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
   public render(): React.ReactNode {
     // this.state.rollbar.info('react test log')
 
+    const platformData = this.state.viewports['mobile'][this.state.region]
+    const tabletData = this.state.viewports['tablet'][this.state.region]
+    const desktopData = this.state.viewports['desktop'][this.state.region]
+
     return (
       <Main>
         <GlobalStyles />
+
+        <GoPro onClick={this.showModal} />
 
         <Regions
           trigger={this.regionTrigger}
           region={this.state.region}
         />
 
-        <Viewport width={360} height={640} trigger={this.displayTrigger} index={1} osVisible={true} />
+        <Platform
+          platform={'mobile'}
+          trigger={this.platformTrigger}
+          displayTrigger={this.displayTrigger}
+          data={platformData}
+        />
+
+        <Platform
+          platform={'tablet'}
+          trigger={this.platformTrigger}
+          displayTrigger={this.displayTrigger}
+          data={tabletData}
+        />
+
+        <Platform
+          platform={'desktop'}
+          trigger={this.platformTrigger}
+          displayTrigger={this.displayTrigger}
+          data={desktopData}
+        />
 
         <UpdateBanner update={this.state.update} />
+
+        <GoproBanner hideFnc={this.hideModal} shown={this.state.showGoproModal} />
+
       </Main>
     )
   }
