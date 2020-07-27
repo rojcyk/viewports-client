@@ -10,8 +10,8 @@ import shouldCheck from './shouldCheck'
 
 const main = async () => {
   figma.showUI(__html__, {
-    width: 320,
-    height: 480
+    width: 360,
+    height: 500
   })
 
   /* We are getting the data saved in Figma client */
