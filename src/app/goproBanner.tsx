@@ -6,15 +6,25 @@ import { Star } from './icons/star'
 const Wrapper = styled.div`
   user-select: none;
   background-color: #FFF8DF;
-  padding: 14px;
+  padding-left: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #F3E6D6;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s ease-out;
+  transition: all 0.3s ease-out;
   cursor: pointer;
+
+  b {
+    transition: margin-left 0.18s ease-out;
+  }
 
   &:hover {
     background-color: #FFF1D6;
+
+    b {
+      margin-left: 6px;
+    }
   }
 `
 
@@ -25,9 +35,8 @@ const Copy = styled.div`
 const Title = styled.h1`
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 14px;
   color: #7B3400;
-  margin-bottom: 4px;
 `
 
 const Description = styled.p`
@@ -46,11 +55,9 @@ export const GoPro = ({
 }) => {
   return (
     <Wrapper onClick={onClick}>
-        <Star/>
-
+      <Star size={16} />
       <Copy>
-        <Title>Viewports Family →</Title>
-        <Description>Help cover server cost and future develpment!</Description>
+        <Title>Support Viewports <b>→</b></Title>
       </Copy>
     </Wrapper>
   )
