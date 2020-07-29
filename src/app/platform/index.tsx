@@ -3,7 +3,6 @@ import * as React from 'react'
 import { Section } from '../section'
 import { PlatformToggle } from './platformToggle'
 import { Viewport } from '../viewport/index'
-// import { PlatformSelection } from './platformSelection'
 
 interface PlatformProps {
   trigger: Function

@@ -5,9 +5,13 @@ export const colors = {
   bg: {
     primary: '#FFFFFF',
     secondary: '#FBFBFB',
-    tertiary: '#F3F3F3',
+    tertiary: '#E3EAEE',
+    tertiaryHover: '#D1DCE3',
   },
-  cta: '#18A0FB',
+  cta: {
+    normal: '#18A0FB',
+    normalHover: '#0F91E9'
+  },
   ink: {
     primary: '#333333',
     secondary: '#757575',

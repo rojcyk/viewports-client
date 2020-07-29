@@ -26,7 +26,7 @@ const Display = styled.div<{
   type: number
 }>`
   position: relative;
-  border: 1px solid ${colors.cta};
+  border: 1px solid ${colors.cta.normal};
   background-color: #e8f5ff;
   border-radius: 3px;
   width: ${(props): string => props.width.toString()}px;

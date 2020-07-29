@@ -33,6 +33,7 @@ const RegionSelectionStyle = styled.ul<{
   transition: all 300ms ease-out;
   position: relative;
   overflow: hidden;
+  font-size: 14px;
 
   margin: 0;
   padding: 0;
@@ -57,8 +58,9 @@ const RegionSelectionItemStyle = styled.li<{
   cursor: pointer;
 
   &:hover {
-    color: ${colors.cta};
-    background-color: rgba(24, 160, 251, 0.06);
+    font-weight: 600;
+    color: ${colors.ink.primary};
+    background-color: ${colors.bg.tertiary};
   }
 `
 

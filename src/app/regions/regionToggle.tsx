@@ -30,10 +30,6 @@ const RegionToogleStyle = styled.div<{
   outline: none;
   font-weight: 500;
   transition: all ${animationSpeed}ms ease-out;
-
-  // &:hover {
-  //   background-color: ${colors.bg.tertiary};
-  // }
 `
 
 export const RegionToogle = (props: {
