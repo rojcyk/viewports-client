@@ -3,14 +3,15 @@ import dayjs from 'dayjs'
 import io from 'figmaio/ui'
 import Rollbar from 'rollbar'
 import styled from 'styled-components'
+import axios, { AxiosResponse } from 'axios'
 
-import downloadViewports from '../helpers/downloadViewports'
 import { DATA_UPDATE, REGION_UPDATE, DISPLAY_UPDATE } from '../constants/events'
+import { VIEWPORTS_URL } from '../constants/server'
 import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
 import { Regions } from './regions/index'
 import { Platform } from './platform/index'
-import { GoPro } from './gopro'
+import { GoPro } from './goproBanner'
 import { GoproBanner } from './goproModal'
 
 // ******************** //
@@ -110,7 +111,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
 
       await new Promise((resolve): any => setTimeout(resolve, 1500))
 
-      const newViewportsResponse = await downloadViewports()
+      const newViewportsResponse = await axios.get(`${VIEWPORTS_URL}/viewports`)
 
       this.setState({ update: 'done' })
 
