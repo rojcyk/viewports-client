@@ -10,6 +10,7 @@ import { Star } from './icons/star'
 import { Github } from './icons/github'
 import { Heart } from './icons/heart'
 import { Money } from './icons/money'
+import { ButtonCTA, ButtonSecondary } from './button'
 
 const ImageWrapper = styled.img`
   display: block;
@@ -22,7 +23,7 @@ const ImageWrapper = styled.img`
 `
 
 const Title = styled.h1`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   padding: 0;
   margin: 0;
@@ -52,6 +53,26 @@ const Subtitle = styled.p`
   }
 `
 
+const Separator = styled.hr`
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  border: none;
+  background-color: ${colors.bg.tertiary};
+`
+
+const ButtonGroup = styled.div`
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  
+
+  & > *:not(:last-of-type) {
+    margin-bottom: 16px;
+  }
+`
+
 export const GoproBanner = ({
   hideFnc,
   shown
@@ -59,29 +80,29 @@ export const GoproBanner = ({
   hideFnc: any,
   shown: boolean
 }): JSX.Element => {
+
+  if (shown) {
+    console.log('settings hidden')
+    document.body.style.overflow = "hidden"
+  } else {
+    console.log('settings visible')
+    document.body.style.overflow = "visible"
+  }
+
   return (
     <Modal close={hideFnc} show={shown}>
       <ImageWrapper src={Icon} />
-      <Title>Viewports  Friends</Title>
+      <Title>Support Viewports</Title>
       <Description>
-        Running Viewports cost money, but the product itself is free.
+        If you enjoy using Viewports, or you find value in what it provides, you migh consider donating 👊
         <br />
         <br />
-        And I don't want to change that! But if you would like to help to keep the lights on, and maybe expand on the features.
-        <br />
-        <br />
-        You might consider donating!
+        It would be extremly valuable for me. It would help me to improve this one, and build other free plugins.
       </Description>
 
       <Feature image={Star} title={'Remove the banner'}>
         <Subtitle>
           You don't like it? It is gone!
-        </Subtitle>
-      </Feature>
-
-      <Feature image={Heart} title={'Support the development'}>
-        <Subtitle>
-          I would like to add more features, and build libraries that the whole Figma plugin community can benefit from.
         </Subtitle>
       </Feature>
 
@@ -91,11 +112,24 @@ export const GoproBanner = ({
         </Subtitle>
       </Feature>
 
-      <Feature image={Github} title={'Viewports is open source'}>
+      <Feature image={Heart} title={'Support the development'}>
         <Subtitle>
-          If you don't want to support this project it is fine! You can even <a href="https://github.com/rojcyk/viewports-client" target="_blank">download the source code</a> and build it yourself.
+          I would like to add more features, and build libraries that the whole Figma plugin community can benefit from.
         </Subtitle>
       </Feature>
+
+      <Feature image={Github} title={'Viewports is open source'}>
+        <Subtitle>
+          If you would like to see how the plugin is built or would like to play with it yourself, you can <a href="https://github.com/rojcyk/viewports-client" target="_blank">download the source code</a>!
+        </Subtitle>
+      </Feature>
+
+      <Separator />
+
+      <ButtonGroup>
+        <ButtonCTA onClick={hideFnc}>Support</ButtonCTA>
+        <ButtonSecondary onClick={hideFnc}>Close</ButtonSecondary>
+      </ButtonGroup>
     </Modal>
   )
 }
