@@ -8,6 +8,10 @@ const Wrapper = styled.div`
   padding: 16px 14px;
   border-top: 1px solid ${colors.bg.tertiary};
   display: flex;
+
+  &:last-of-type {
+    border-top: 1px solid ${colors.bg.tertiary};
+  }
 `
 
 const Copy = styled.div`
@@ -40,7 +44,7 @@ export const Feature = ({
 }: {
   title: string,
   children: any,
-  image: React.StatelessComponent
+  image: any
 }) => {
   const Image = image
   return (
