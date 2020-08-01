@@ -1,7 +1,5 @@
 import * as React from 'react'
 import styled from 'styled-components'
-
-import { Star } from './icons/star'
 import { colors } from '../constants/tokens'
 
 const Wrapper = styled.div`
