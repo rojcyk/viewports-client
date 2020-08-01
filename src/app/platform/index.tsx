@@ -8,7 +8,7 @@ interface PlatformProps {
   trigger: Function
   displayTrigger: Function
   platform: any
-  data: Client.Viewport[]
+  data?: Client.Viewport[]
   expanded?: boolean
 }
 
@@ -26,6 +26,7 @@ export class Platform extends Section<PlatformProps> {
   }
 
   public renderContent(): React.ReactNode {
+    if (this.props.data === undefined) return null
     const list = this.props.data.map((viewport: Client.Viewport, i: number) => {
       return (
         <Viewport 
