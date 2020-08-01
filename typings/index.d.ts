@@ -31,6 +31,6 @@ declare namespace Client {
     cacheValid: boolean,
     update: LoadingState,
     region: RegionCode,
-    showGoproModal: boolean
+    showSupportModal: boolean
   }
 }

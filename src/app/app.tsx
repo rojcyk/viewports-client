@@ -30,18 +30,18 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
     this.state = {
       viewports: props.viewports,
       cacheValid: props.cacheValid,
-      showGoproModal: false,
+      showSupportModal: false,
       update: 'init',
       region: props.region ? props.region : 'ww'
     }
   }
 
   showModal = () => {
-    this.setState({ showGoproModal: true });
+    this.setState({ showSupportModal: true });
   };
 
   hideModal = () => {
-    this.setState({ showGoproModal: false });
+    this.setState({ showSupportModal: false });
   }
 
   // ************************************************ //
@@ -184,7 +184,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
 
         <UpdateBanner update={this.state.update} />
 
-        <SupportModal hideFnc={this.hideModal} shown={this.state.showGoproModal} />
+        <SupportModal hideFnc={this.hideModal} shown={this.state.showSupportModal} />
 
       </Main>
     )
