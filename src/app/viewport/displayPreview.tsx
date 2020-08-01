@@ -37,7 +37,7 @@ const Display = styled.div<{
       case 1:
         return `
           &:after {
-            background-color: ${colors.cta};
+            background-color: ${colors.cta.normal};
             position: absolute;
             text-align: center;
             content: ' ';
@@ -47,7 +47,7 @@ const Display = styled.div<{
 
           &:before {
             font-size: 10px;
-            background-color: ${colors.cta};
+            background-color: ${colors.cta.normal};
             position: absolute;
             text-align: center;
             line-height: 4px;
@@ -60,7 +60,7 @@ const Display = styled.div<{
       case 2:
         return `
           &:after {
-            background-color: ${colors.cta};
+            background-color: ${colors.cta.normal};
             position: absolute;
             text-align: center;
             content: ' ';
