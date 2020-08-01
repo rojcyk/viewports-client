@@ -58,7 +58,6 @@ const RegionSelectionItemStyle = styled.li<{
   cursor: pointer;
 
   &:hover {
-    font-weight: 600;
     color: ${colors.ink.primary};
     background-color: ${colors.bg.tertiary};
   }
