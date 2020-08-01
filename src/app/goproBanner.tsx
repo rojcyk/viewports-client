@@ -6,9 +6,7 @@ import { Star } from './icons/star'
 const Wrapper = styled.div`
   user-select: none;
   background-color: #FFF8DF;
-  padding-left: 14px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 8px 14px;
   border-bottom: 1px solid #F3E6D6;
   display: flex;
   align-items: center;
@@ -35,8 +33,9 @@ const Copy = styled.div`
 const Title = styled.h1`
   margin: 0;
   padding: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: #7B3400;
+  font-weight: 400;
 `
 
 const Description = styled.p`
@@ -55,7 +54,7 @@ export const GoPro = ({
 }) => {
   return (
     <Wrapper onClick={onClick}>
-      <Star size={16} />
+      <Star size={14} />
       <Copy>
         <Title>Support Viewports <b>→</b></Title>
       </Copy>
