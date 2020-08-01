@@ -1,16 +1,15 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import Icon from './imgs/icon.png'
-import { Modal } from './modal'
-import { Feature } from './feature'
-import { colors } from '../constants/tokens'
+import Icon from '../imgs/icon.png'
+import { Modal } from '../modal'
+import { Feature } from '../feature'
+import { colors } from '../../constants/tokens'
 
-import { Star } from './icons/star'
-import { Github } from './icons/github'
-import { Heart } from './icons/heart'
-import { Money } from './icons/money'
-import { ButtonCTA, ButtonSecondary } from './button'
+import { Star } from '../icons/star'
+import { Github } from '../icons/github'
+import { Heart } from '../icons/heart'
+import { ButtonCTA, ButtonSecondary } from '../button'
 
 const ImageWrapper = styled.img`
   display: block;
@@ -73,7 +72,7 @@ const ButtonGroup = styled.div`
   }
 `
 
-export const GoproBanner = ({
+export const SupportModal = ({
   hideFnc,
   shown
 }: {
@@ -82,10 +81,10 @@ export const GoproBanner = ({
 }): JSX.Element => {
 
   if (shown) {
-    console.log('settings hidden')
+    console.log('[Viewports] Modal hidden')
     document.body.style.overflow = "hidden"
   } else {
-    console.log('settings visible')
+    console.log('[Viewports] Modal shown')
     document.body.style.overflow = "visible"
   }
 
@@ -100,13 +99,15 @@ export const GoproBanner = ({
         It would be extremly valuable for me. It would help me to improve this one, and build other free plugins.
       </Description>
 
-      <Feature image={Star} title={'Remove the banner'}>
+      {/* So far github doesn't have an easy way to check whether somebody is supporting or not. */}
+
+      {/* <Feature image={Star} title={'Remove the banner'}>
         <Subtitle>
           You don't like it? It is gone!
         </Subtitle>
-      </Feature>
+      </Feature> */}
 
-      <Feature image={Money} title={'Help cover the server cost'}>
+      <Feature image={Star} title={'Help cover the server cost'}>
         <Subtitle>
           There are weekly web scrappers, and a server that is providing the data to tens of thousands of plugin installations.
         </Subtitle>

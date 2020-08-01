@@ -2,7 +2,7 @@ import * as React from 'react'
 import dayjs from 'dayjs'
 import io from 'figmaio/ui'
 import styled from 'styled-components'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
 import { DATA_UPDATE, REGION_UPDATE, DISPLAY_UPDATE } from '../constants/events'
 import { VIEWPORTS_URL } from '../constants/server'
@@ -10,8 +10,8 @@ import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
 import { Regions } from './regions/index'
 import { Platform } from './platform/index'
-import { GoPro } from './goproBanner'
-import { GoproBanner } from './goproModal'
+import { GoPro } from './support/supportBanner'
+import { SupportModal } from './support/supportModal'
 
 // ******************** //
 // APP MAIN CLASS
@@ -148,8 +148,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       platformData = this.state.viewports['mobile'][this.state.region]
       tabletData = this.state.viewports['tablet'][this.state.region]
       desktopData = this.state.viewports['desktop'][this.state.region]
-    }
-    
+    }    
 
     return (
       <Main>
@@ -185,7 +184,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
 
         <UpdateBanner update={this.state.update} />
 
-        <GoproBanner hideFnc={this.hideModal} shown={this.state.showGoproModal} />
+        <SupportModal hideFnc={this.hideModal} shown={this.state.showGoproModal} />
 
       </Main>
     )
