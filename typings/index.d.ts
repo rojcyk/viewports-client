@@ -31,7 +31,6 @@ declare namespace Client {
     cacheValid: boolean,
     update: LoadingState,
     region: RegionCode,
-    showGoproModal: boolean,
-    rollbar: import("rollbar")
+    showGoproModal: boolean
   }
 }

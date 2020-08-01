@@ -1,7 +1,6 @@
 import * as React from 'react'
 import dayjs from 'dayjs'
 import io from 'figmaio/ui'
-import Rollbar from 'rollbar'
 import styled from 'styled-components'
 import axios, { AxiosResponse } from 'axios'
 
@@ -33,12 +32,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       cacheValid: props.cacheValid,
       showGoproModal: false,
       update: 'init',
-      region: props.region ? props.region : 'ww',
-      rollbar: new Rollbar({
-        accessToken: process.env.ROLLBAR_TOKEN,
-        captureUncaught: true,
-        captureUnhandledRejections: true,
-      })
+      region: props.region ? props.region : 'ww'
     }
   }
 
@@ -148,11 +142,14 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
   // ************************************************ //
 
   public render(): React.ReactNode {
-    // this.state.rollbar.info('react test log')
+    let platformData, tabletData, desktopData: Client.Viewport[] = []
 
-    const platformData = this.state.viewports['mobile'][this.state.region]
-    const tabletData = this.state.viewports['tablet'][this.state.region]
-    const desktopData = this.state.viewports['desktop'][this.state.region]
+    if (this.state.viewports) {
+      platformData = this.state.viewports['mobile'][this.state.region]
+      tabletData = this.state.viewports['tablet'][this.state.region]
+      desktopData = this.state.viewports['desktop'][this.state.region]
+    }
+    
 
     return (
       <Main>
