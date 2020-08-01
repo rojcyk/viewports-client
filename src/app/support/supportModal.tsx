@@ -72,6 +72,10 @@ const ButtonGroup = styled.div`
   }
 `
 
+const openGithub = () => {
+  window.open("https://github.com/sponsors/rojcyk")
+}
+
 export const SupportModal = ({
   hideFnc,
   shown
@@ -128,7 +132,7 @@ export const SupportModal = ({
       <Separator />
 
       <ButtonGroup>
-        <ButtonCTA onClick={hideFnc}>Support</ButtonCTA>
+        <ButtonCTA onClick={openGithub}>Support</ButtonCTA>
         <ButtonSecondary onClick={hideFnc}>Close</ButtonSecondary>
       </ButtonGroup>
     </Modal>
