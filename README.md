@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./logo.png" width="128" height="128">
+  <img src="./cover.png">
   <br>
   <br>
   <br>
@@ -10,9 +10,20 @@
 
 # Viewports client
 
+**Viewports is a [Figma](https://figmac.com/) plugin**
+
 _Make sure that your designs are covering a reasonable share of the market. Select one or more frames and Viewports will let you change their sizes to your preferred display. Simple!_
 
 [Viewports](https://www.figma.com/community/plugin/732240841094697441/Viewports) is a rather simple React App which dynamicaly displays a list popular viewports on the market (together with its market share). It is downlading the data from [viewports-server](https://github.com/rojcyk/viewports-server).
+
+
+## Requirements
+
+- It is a [React App](https://reactjs.org/).
+- It is written in [Typescript](https://www.typescriptlang.org/).
+- It uses [Webpack](https://webpack.js.org/) for bundling.
+
+_You should know at least a liiiiitle bit about these before proceeding._
 
 # Installation
 
