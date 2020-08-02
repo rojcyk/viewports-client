@@ -59,7 +59,7 @@ export const Viewport = (props: {
   platform: string
   share: string
 }) => {
-  const os = mobileOs(props.width, props.height)
+  const os = props.platform === 'mobile' ? mobileOs(props.width, props.height) : 0
 
   return (
     <DisplayStyle
