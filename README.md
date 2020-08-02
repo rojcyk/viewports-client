@@ -10,6 +10,8 @@
 
 # Viewports client
 
+**Viewports is a [Figma](https://figmac.com/) plugin**
+
 _Make sure that your designs are covering a reasonable share of the market. Select one or more frames and Viewports will let you change their sizes to your preferred display. Simple!_
 
 [Viewports](https://www.figma.com/community/plugin/732240841094697441/Viewports) is a rather simple React App which dynamicaly displays a list popular viewports on the market (together with its market share). It is downlading the data from [viewports-server](https://github.com/rojcyk/viewports-server).
