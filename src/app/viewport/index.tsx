@@ -36,7 +36,7 @@ const MarketShare = styled.span`
   background-color: rgba(24, 160, 251, 0.06);
 `
 
-export const selectOS = (width: number, height: number): number => {
+export const mobileOs = (width: number, height: number): number => {
   const dimensions = width + 'x' + height
 
   switch (dimensions) {
@@ -56,10 +56,10 @@ export const Viewport = (props: {
   height: number
   key: number
   trigger: any
-  osVisible: boolean
+  platform: string
   share: string
 }) => {
-  const os = selectOS(props.width, props.height)
+  const os = mobileOs(props.width, props.height)
 
   return (
     <DisplayStyle
@@ -72,7 +72,7 @@ export const Viewport = (props: {
         {props.width}x{props.height}
       </Dimensions>
 
-      {props.osVisible && (<OSBadge os={os} />)}
+      {props.platform === 'mobile' && (<OSBadge os={os} />)}
 
       <MarketShare>{props.share}%</MarketShare>
     </DisplayStyle>

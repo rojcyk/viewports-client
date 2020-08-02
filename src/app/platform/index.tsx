@@ -35,7 +35,7 @@ export class Platform extends Section<PlatformProps> {
           height={viewport.display.height}
           trigger={this.props.displayTrigger}
           key={i}
-          osVisible={true}
+          platform={this.props.platform}
         />
       )
     })
