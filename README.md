@@ -1,4 +1,4 @@
-Make sure that your designs are covering a reasonable share of the market. Select one or more frames and Viewports will let you change their sizes to your preferred display. Simple!<p align="center">
+<p align="center">
   <img src="./logo.png" width="128" height="128">
   <br>
   <br>
