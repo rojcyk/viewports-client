@@ -23,7 +23,7 @@ _Make sure that your designs are covering a reasonable share of the market. Sele
 - It is written in [Typescript](https://www.typescriptlang.org/).
 - It uses [Webpack](https://webpack.js.org/) for bundling.
 
-_You should know at least a liiiiitle bit about these before proceeding._
+_You should know at least a little bit about these before proceeding._
 
 # Installation
 
