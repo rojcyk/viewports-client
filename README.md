@@ -16,6 +16,15 @@ _Make sure that your designs are covering a reasonable share of the market. Sele
 
 [Viewports](https://www.figma.com/community/plugin/732240841094697441/Viewports) is a rather simple React App which dynamicaly displays a list popular viewports on the market (together with its market share). It is downlading the data from [viewports-server](https://github.com/rojcyk/viewports-server).
 
+
+## Requirements
+
+- It is a [React App](https://reactjs.org/).
+- It is written in [Typescript](https://www.typescriptlang.org/).
+- It uses [Webpack](https://webpack.js.org/) for bundling.
+
+_You should know at least a liiiiitle bit about these before proceeding._
+
 # Installation
 
 Is quite simple and there is not much to it.
