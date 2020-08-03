@@ -1,9 +1,9 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const path = require('path')
 const dotenv = require('dotenv')
+const InlineChunkHtmlPlugin = require('./vendor/inlinePlugin')
+
 
 module.exports = (e, argv) => {
   const env = dotenv.config({ path: '.env' }).parsed
@@ -59,7 +59,8 @@ module.exports = (e, argv) => {
         inlineSource: '.(js)$',
         chunks: ['ui']
       }),
-      new HtmlWebpackInlineSourcePlugin()
+      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/.*/])
+      // new HtmlWebpackInlineSourcePlugin()
       // new ScriptExtHtmlWebpackPlugin()
     ]
   }
