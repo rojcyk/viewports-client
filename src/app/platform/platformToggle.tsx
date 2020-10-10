@@ -27,8 +27,8 @@ const PlatformToggleStyle = styled.div<{
 
   padding-left: 12px;
   padding-right: 12px;
-  padding-top: ${props => (props.expanded ? '24px' : '16px')};
-  padding-bottom: ${props => (props.expanded ? '24px' : '16px')};
+  padding-top: ${props => (props.expanded ? '24px' : '14px')};
+  padding-bottom: ${props => (props.expanded ? '24px' : '14px')};
 
   display: flex;
   justify-content: flex-start;
