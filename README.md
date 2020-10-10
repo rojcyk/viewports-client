@@ -3,8 +3,8 @@
   <br>
   <br>
   <br>
-    <a href="https://david-dm.org/rojcyk/viewports-client">
-       <img src="https://david-dm.org/rojcyk/viewports-client.svg">
+    <a href="https://david-dm.org/rojcyk/viewports-client?type=dev">
+       <img src="https://david-dm.org/rojcyk/viewports-client/dev-status.svg">
     </a>
 </p>
 
