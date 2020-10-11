@@ -160,7 +160,9 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
         <GlobalStyles />
 
         <Banners>
-          <GoPro onClick={this.showModal} />
+          <GoPro onClick={() => {
+            window.open("https://github.com/sponsors/rojcyk")
+          }} />
           <GoSlack onClick={() => {
             window.open("https://viewports-production.herokuapp.com/slack/add")
           }} />
