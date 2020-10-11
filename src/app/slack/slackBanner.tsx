@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { Star } from '../icons/star'
+import { Slack } from '../icons/slack'
 
 const Wrapper = styled.div`
   width: 50%;
@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   background-color: #FFF8DF;
   padding: 6px 8px;
   border-bottom: 1px solid #F3E6D6;
+  border-left: 1px solid #F3E6D6;
   display: flex;
   align-items: center;
   transition: all 0.3s ease-out;
@@ -39,17 +40,33 @@ const Title = styled.h1`
   font-weight: 400;
 `
 
+const BetaBadge = styled.span`
+  display: inline-block;
+  margin: 0;
+  margin-left: 4px;
+  padding: 0;
+  font-size: 9px;
+  padding: 2px 4px;
+  text-style: uppercase;
+  letter-spacing: 1px;
+  color: #7B3400;
+  font-weight: 400;
+  border: 1px solid #7B3400;
+  border-radius: 3px;
+  font-weight: 600;
+`
 
-export const GoPro = ({
+
+export const GoSlack = ({
   onClick
 }: {
   onClick: any
 }) => {
   return (
     <Wrapper onClick={onClick}>
-      <Star size={12} />
+      <Slack size={24} />
       <Copy>
-        <Title>Support <b>→</b></Title>
+        <Title>Slack <BetaBadge>BETA</BetaBadge></Title>
       </Copy>
     </Wrapper>
   )

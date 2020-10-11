@@ -11,6 +11,7 @@ import { UpdateBanner } from './updateBanner'
 import { Regions } from './regions/index'
 import { Platform } from './platform/index'
 import { GoPro } from './support/supportBanner'
+import { GoSlack } from './slack/slackBanner'
 import { SupportModal } from './support/supportModal'
 
 // ******************** //
@@ -21,6 +22,10 @@ const Main = styled.main`
   position: relative;
   width: 100%;
   height: 100%;
+`
+
+const Banners = styled.div`
+  display: flex;
 `
 
 export default class App extends React.Component<Client.InitData, Client.AppState> {
@@ -154,7 +159,12 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       <Main>
         <GlobalStyles />
 
-        <GoPro onClick={this.showModal} />
+        <Banners>
+          <GoPro onClick={this.showModal} />
+          <GoSlack onClick={() => {
+            window.open("https://viewports-production.herokuapp.com/slack/add")
+          }} />
+        </Banners>
 
         <Regions
           trigger={this.regionTrigger}
