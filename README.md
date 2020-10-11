@@ -34,4 +34,4 @@ Is quite simple and there is not much to it.
 3. Install the requirements with `npm install` or `yarn install`
 4. Watch the files with `yarn dev` command
 5. Or make a production build with `yarn build`
-6. Load and develop the app in [Figma Desktop app](https://www.figma.com/downloads/)
+6. [Load and develop](https://www.figma.com/plugin-docs/setup/) the app in [Figma Desktop app](https://www.figma.com/downloads/)
