@@ -5,7 +5,9 @@
   <br>
     <a href="https://david-dm.org/rojcyk/viewports-client?type=dev">
        <img src="https://david-dm.org/rojcyk/viewports-client/dev-status.svg">
-    </a>
+    </a> 
+    <img src="https://img.shields.io/endpoint?url=https://yuanqing.github.io/figma-plugins-stats/plugin/732240841094697441/installs.json">
+
 </p>
 
 # Viewports client
