@@ -14,7 +14,6 @@ interface PlatformToggleProps {
 
 const PlatformToggleStyle = styled.div<{
   expanded: boolean
-  value: any
 }>`
   fill: ${props =>
     props.expanded ? colors.cta : colors.ink.primary} !important;
@@ -51,7 +50,6 @@ export class PlatformToggle extends React.Component<PlatformToggleProps, {}> {
       <PlatformToggleStyle
         expanded={this.props.expanded}
         onClick={this.customClick.bind(this)}
-        value={this.props.platform}
       >
         <Arrow expanded={this.props.expanded} />
         {this.props.label}

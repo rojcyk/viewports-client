@@ -28,10 +28,10 @@ interface SectionState {
 const Wrapper = styled.div<{
   expanded: boolean
 }>`
-  transition: padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+  transition: border-top 0.3s ease-out, border-bottom 0.3s ease-out;
   background-color: ${colors.bg.tertiary};
-  padding-top: ${props => (props.expanded ? '3px' : '0')};
-  padding-bottom: ${props => (props.expanded ? '4px' : '1px')};
+  border-top: ${props => (props.expanded ? '3px' : '0')} solid #E3EAEE;
+  border-bottom: ${props => (props.expanded ? '4px' : '1px')} solid #E3EAEE;
 `
 
 const InnerWrapper = styled.div<{

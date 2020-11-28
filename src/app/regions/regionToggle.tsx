@@ -17,6 +17,7 @@ const RegionToogleStyle = styled.div<{
 
   cursor: pointer;
   width: 100%;
+  min-height: 30px;
 
   padding-left: 12px;
   padding-right: 12px;

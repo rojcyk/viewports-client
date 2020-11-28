@@ -159,14 +159,14 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       <Main>
         <GlobalStyles />
 
-        <Banners>
+        {/* <Banners>
           <GoPro onClick={() => {
             window.open("https://github.com/sponsors/rojcyk")
           }} />
           <GoSlack onClick={() => {
             window.open("https://viewports-production.herokuapp.com/slack/add")
           }} />
-        </Banners>
+        </Banners> */}
 
         <Regions
           trigger={this.regionTrigger}

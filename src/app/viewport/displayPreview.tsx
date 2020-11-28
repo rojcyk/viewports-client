@@ -34,36 +34,37 @@ const Display = styled.div<{
 
   ${props => {
     switch (props.type) {
-      case 1:
-        return `
-          &:after {
-            background-color: ${colors.cta.normal};
-            position: absolute;
-            text-align: center;
-            content: ' ';
-            height: 3px;
-            width: 100%;
-          }
+      // case 0:
+      //   return `
+      //     &:after {
+      //       background-color: ${colors.cta.normal};
+      //       position: absolute;
+      //       text-align: center;
+      //       content: ' ';
+      //       height: 3px;
+      //       width: 100%;
+      //     }
 
-          &:before {
-            font-size: 10px;
-            background-color: ${colors.cta.normal};
-            position: absolute;
-            text-align: center;
-            line-height: 4px;
-            bottom: 0;
-            color: ${colors.bg.primary};
-            content: '•';
-            height: 3px;
-            width: 100%;
-          }`
-      case 2:
+      //     &:before {
+      //       font-size: 10px;
+      //       background-color: ${colors.cta.normal};
+      //       position: absolute;
+      //       text-align: center;
+      //       line-height: 4px;
+      //       bottom: 0;
+      //       color: ${colors.bg.primary};
+      //       content: '•';
+      //       height: 3px;
+      //       width: 100%;
+      //     }`
+      default:
         return `
           &:after {
             background-color: ${colors.cta.normal};
             position: absolute;
             text-align: center;
             content: ' ';
+            top: 0;
             height: 2px;
             width: 8px;
             border-bottom-right-radius: 2px;
