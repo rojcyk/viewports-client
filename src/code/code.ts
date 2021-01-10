@@ -7,12 +7,9 @@ import updateListener from './updateListener'
 import regionListener from './regionListener'
 import resizeListener from './resizeListener'
 import shouldCheck from './shouldCheck'
+import figmalytics from '../../vendor/figmalytics'
 
 const main = async () => {
-  figma.showUI(__html__, {
-    width: 300,
-    height: 480
-  })
 
   /* We are getting the data saved in Figma client */
   const viewports = await figma.clientStorage.getAsync(VIEWPORTS)
@@ -33,6 +30,13 @@ const main = async () => {
     viewports,
     region
   }
+
+  figma.showUI(__html__, {
+    width: 300,
+    height: 480
+  })
+
+  figma.ui.postMessage({ type: 'networkRequest' })
 
   /* When launching the plugin, figma sets a command 
    * if it standard launch, the command is empty
