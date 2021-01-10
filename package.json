@@ -19,7 +19,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.4",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "dayjs": "^1.9.6",
     "dotenv": "^8.2.0",
     "figmaio": "^0.2.5",
