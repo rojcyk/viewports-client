@@ -10,8 +10,8 @@ import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
 import { Regions } from './regions/index'
 import { Platform } from './platform/index'
-import { GoPro } from './support/supportBanner'
-import { GoSlack } from './slack/slackBanner'
+// import { GoPro } from './support/supportBanner'
+// import { GoSlack } from './slack/slackBanner'
 import { SupportModal } from './support/supportModal'
 
 // ******************** //
@@ -69,6 +69,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
 
   regionTrigger = (e: React.MouseEvent): void => {
     const value = e.currentTarget.attributes.getNamedItem('value')
+    
 
     if (value) {
       const tmpValue = value.value as Client.RegionCode
@@ -100,6 +101,7 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
   // ************************************************ //
 
   public async componentDidMount(): Promise<void> {
+
     if (this.state.cacheValid === false) {
       console.log('[Viewports] Outdated ...')
       console.log('[Viewports] Downloading new data ...')

@@ -7,7 +7,7 @@ import updateListener from './updateListener'
 import regionListener from './regionListener'
 import resizeListener from './resizeListener'
 import shouldCheck from './shouldCheck'
-import figmalytics from '../../vendor/figmalytics'
+// import figmalytics from '../../vendor/figmalytics'
 
 const main = async () => {
 
