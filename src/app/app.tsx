@@ -4,15 +4,12 @@ import io from 'figmaio/ui'
 import styled from 'styled-components'
 import axios from 'axios'
 
-import { DATA_UPDATE, REGION_UPDATE, DISPLAY_UPDATE } from '../constants/events'
+import { DATA_UPDATE, REGION_UPDATE } from '../constants/events'
 import { VIEWPORTS_URL } from '../constants/server'
 import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
 import { Regions } from './regions/index'
 import { Platform } from './platform/index'
-// import { GoPro } from './support/supportBanner'
-// import { GoSlack } from './slack/slackBanner'
-import { SupportModal } from './support/supportModal'
 
 // ******************** //
 // APP MAIN CLASS
@@ -24,10 +21,6 @@ const Main = styled.main`
   height: 100%;
 `
 
-const Banners = styled.div`
-  display: flex;
-`
-
 export default class App extends React.Component<Client.InitData, Client.AppState> {
   public constructor(props: Client.InitData) {
     super(props)
@@ -35,32 +28,9 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
     this.state = {
       viewports: props.viewports,
       cacheValid: props.cacheValid,
-      showSupportModal: false,
       update: 'init',
       region: props.region ? props.region : 'ww'
     }
-  }
-
-  showModal = () => {
-    this.setState({ showSupportModal: true });
-  };
-
-  hideModal = () => {
-    this.setState({ showSupportModal: false });
-  }
-
-  // ************************************************ //
-  // Function that handles press on a display entity.
-  // ************************************************ //
-
-  displayTrigger = async (e: React.MouseEvent): Promise<void> => {
-    const width = e.currentTarget.getAttribute('width')
-    const height = e.currentTarget.getAttribute('height')
-  
-    io.send(DISPLAY_UPDATE, {
-      width: width ? parseInt(width) : null,
-      height: height ? parseInt(height) : null
-    })
   }
 
   // ************************************************ //
@@ -69,30 +39,12 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
 
   regionTrigger = (e: React.MouseEvent): void => {
     const value = e.currentTarget.attributes.getNamedItem('value')
-    
 
     if (value) {
       const tmpValue = value.value as Client.RegionCode
       this.setState({ region: tmpValue })
       io.send(REGION_UPDATE, tmpValue)
     }
-  }
-
-  // ************************************************ //
-  // Function that handles press on a platform item.
-  // ************************************************ //
-
-  platformTrigger = async (e: React.MouseEvent): Promise<void> => {
-    // console.log('platform trigger')
-  }
-
-  // ************************************************ //
-  // Function that handles what happens when 
-  // update is finished
-  // ************************************************ //
-
-  updateFinishedTrigger = async (e: React.MouseEvent): Promise<void> => {
-    // this.props.updateFinishedTrigger(e)
   }
 
   // ************************************************ //
@@ -139,7 +91,6 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       console.log('[Viewports] Data up to date')
     }
     
-
     console.log(`[Viewports] Current app state:`)
     console.log(this.state)
   }
@@ -161,15 +112,6 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
       <Main>
         <GlobalStyles />
 
-        {/* <Banners>
-          <GoPro onClick={() => {
-            window.open("https://github.com/sponsors/rojcyk")
-          }} />
-          <GoSlack onClick={() => {
-            window.open("https://viewports-production.herokuapp.com/slack/add")
-          }} />
-        </Banners> */}
-
         <Regions
           trigger={this.regionTrigger}
           region={this.state.region}
@@ -177,28 +119,20 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
 
         <Platform
           platform={'mobile'}
-          trigger={this.platformTrigger}
-          displayTrigger={this.displayTrigger}
           data={platformData}
         />
 
         <Platform
           platform={'tablet'}
-          trigger={this.platformTrigger}
-          displayTrigger={this.displayTrigger}
           data={tabletData}
         />
 
         <Platform
           platform={'desktop'}
-          trigger={this.platformTrigger}
-          displayTrigger={this.displayTrigger}
           data={desktopData}
         />
 
         <UpdateBanner update={this.state.update} />
-
-        <SupportModal hideFnc={this.hideModal} shown={this.state.showSupportModal} />
 
       </Main>
     )

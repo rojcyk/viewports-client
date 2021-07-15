@@ -56,7 +56,7 @@ export const Viewport = (props: {
   height: number
   key: number
   trigger: any
-  platform: string
+  platform: Client.PlatformCode
   share: string
 }) => {
   const os = props.platform === 'mobile' ? mobileOs(props.width, props.height) : 0
@@ -67,7 +67,7 @@ export const Viewport = (props: {
       height={props.height}
       onClick={props.trigger}
     >
-      <DisplayPreview height={props.height} width={props.width} os={os} />
+      <DisplayPreview height={props.height} width={props.width} platform={props.platform} />
       <Dimensions>
         {props.width}x{props.height}
       </Dimensions>
