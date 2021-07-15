@@ -4,7 +4,6 @@ const path = require('path')
 const dotenv = require('dotenv')
 const InlineChunkHtmlPlugin = require('./vendor/inlinePlugin')
 
-
 module.exports = (e, argv) => {
   const env = dotenv.config({ path: '.env' }).parsed
 
