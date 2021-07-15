@@ -31,6 +31,5 @@ declare namespace Client {
     cacheValid: boolean,
     update: LoadingState,
     region: RegionCode,
-    showSupportModal: boolean
   }
 }
