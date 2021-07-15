@@ -12,7 +12,7 @@
 
 # Viewports client
 
-**Viewports is a [Figma](https://figmac.com/) plugin**
+**Viewports is a [Figma](https://figma.com/) plugin**
 
 _Make sure that your designs are covering a reasonable share of the market. Select one or more frames and Viewports will let you change their sizes to your preferred display. Simple!_
 
