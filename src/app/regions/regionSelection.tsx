@@ -59,7 +59,7 @@ const RegionSelectionItemStyle = styled.li<{
 
   &:hover {
     color: ${colors.ink.primary};
-    background-color: ${colors.bg.tertiary};
+    background-color: #F2F1EF;
   }
 `
 
