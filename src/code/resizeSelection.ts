@@ -13,7 +13,7 @@ export default (width: number, height: number) => {
           el.resize(width, height)
           el.setRelaunchData({})
           el.setRelaunchData({
-            edit: 'Change the viewport based on the market share.',
+            edit: 'Change the viewport based on a market share.',
           })
           break
       }
