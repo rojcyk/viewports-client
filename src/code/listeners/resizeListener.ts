@@ -1,6 +1,6 @@
 import io from 'figmaio/code'
-import { DISPLAY_UPDATE } from '../constants/events'
-import resizeSelection from './resizeSelection'
+import { DISPLAY_UPDATE } from '../../constants/events'
+import resizeSelection from '../resizeSelection'
 
 export default (): void => {
   io.on(

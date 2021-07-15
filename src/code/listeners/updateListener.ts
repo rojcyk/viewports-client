@@ -1,6 +1,6 @@
 import io from 'figmaio/code'
-import { DATA_UPDATE } from '../constants/events'
-import { LAST_CHECK, VIEWPORTS } from '../constants/storageProps'
+import { DATA_UPDATE } from '../../constants/events'
+import { LAST_CHECK, VIEWPORTS } from '../../constants/storageProps'
 
 export default async (): Promise<void> => {
   io.on(

@@ -3,13 +3,11 @@ import io from 'figmaio/code'
 import { VIEWPORTS, REGION } from '../constants/storageProps'
 import { APP_START } from '../constants/events'
 
-import updateListener from './updateListener'
-import regionListener from './regionListener'
-import resizeListener from './resizeListener'
+import updateListener from './listeners/updateListener'
+import regionListener from './listeners/regionListener'
+import resizeListener from './listeners/resizeListener'
 import shouldCheck from './shouldCheck'
 import startWithParams from './startWithParams'
-// import resizeSelection from './resizeSelection'
-// import figmalytics from '../../vendor/figmalytics'
 
 const main = async () => {
   /* We are getting the data saved in Figma client */
