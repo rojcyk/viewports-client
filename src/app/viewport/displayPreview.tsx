@@ -23,7 +23,7 @@ const PreviewWrapper = styled.div`
 const Display = styled.div<{
   width: number
   height: number
-  type: number
+  platform: Client.PlatformCode
 }>`
   position: relative;
   border: 1px solid ${colors.cta.normal};
@@ -33,31 +33,8 @@ const Display = styled.div<{
   height: ${(props): string => props.height.toString()}px;
 
   ${props => {
-    switch (props.type) {
-      // case 0:
-      //   return `
-      //     &:after {
-      //       background-color: ${colors.cta.normal};
-      //       position: absolute;
-      //       text-align: center;
-      //       content: ' ';
-      //       height: 3px;
-      //       width: 100%;
-      //     }
-
-      //     &:before {
-      //       font-size: 10px;
-      //       background-color: ${colors.cta.normal};
-      //       position: absolute;
-      //       text-align: center;
-      //       line-height: 4px;
-      //       bottom: 0;
-      //       color: ${colors.bg.primary};
-      //       content: '•';
-      //       height: 3px;
-      //       width: 100%;
-      //     }`
-      default:
+    switch (props.platform) {
+      case 'mobile':
         return `
           &:after {
             background-color: ${colors.cta.normal};
@@ -65,7 +42,7 @@ const Display = styled.div<{
             text-align: center;
             content: ' ';
             top: 0;
-            height: 2px;
+            height: 1px;
             width: 8px;
             border-bottom-right-radius: 2px;
             border-bottom-left-radius: 2px;
@@ -101,15 +78,15 @@ const calculateSize = (widthRatio: number, heightRatio: number): DisplayStyle =>
   }
 }
 
-export const DisplayPreview = (props: { width: number, height: number, os: number }) => {
+export const DisplayPreview = (props: { width: number, height: number, platform: Client.PlatformCode }) => {
   const { width, height } = calculateSize(props.width, props.height)
 
   return (
     <PreviewWrapper>
       <Display
-        type={props.os}
         width={width}
         height={height}
+        platform={props.platform}
       />
     </PreviewWrapper>
   )
