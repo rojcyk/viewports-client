@@ -8,7 +8,6 @@ interface PlatformToggleProps {
   label: string
   expanded: boolean
   customAction: any
-  trigger: Function
   platform: any
 }
 
@@ -41,7 +40,6 @@ const PlatformToggleStyle = styled.div<{
 
 export class PlatformToggle extends React.Component<PlatformToggleProps, {}> {
   customClick = (e: React.MouseEvent): void => {
-    this.props.trigger(e)
     this.props.customAction()
   }
 
@@ -51,7 +49,7 @@ export class PlatformToggle extends React.Component<PlatformToggleProps, {}> {
         expanded={this.props.expanded}
         onClick={this.customClick.bind(this)}
       >
-        <Arrow expanded={this.props.expanded} />
+        <Arrow direction={this.props.expanded ? "down" : "right"} />
         {this.props.label}
       </PlatformToggleStyle>
     )
