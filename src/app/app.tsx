@@ -10,6 +10,7 @@ import { GlobalStyles } from './globalStyles'
 import { UpdateBanner } from './updateBanner'
 import { Regions } from './regions/index'
 import { Platform } from './platform/index'
+import { colors } from '../constants/tokens'
 
 // ******************** //
 // APP MAIN CLASS
@@ -19,6 +20,18 @@ const Main = styled.main`
   position: relative;
   width: 100%;
   height: 100%;
+`
+
+const Footer = styled.p`
+  width: 100%;
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: ${colors.ink.tertiary};
+`
+
+const FooterLink = styled.a`
+  color: ${colors.ink.tertiary};
 `
 
 export default class App extends React.Component<Client.InitData, Client.AppState> {
@@ -131,6 +144,10 @@ export default class App extends React.Component<Client.InitData, Client.AppStat
           platform={'desktop'}
           data={desktopData}
         />
+
+        <Footer>
+          <FooterLink target="_blank" href="https://twitter.com/rojcyk">Feedback</FooterLink> • <FooterLink target="_blank" href="https://github.com/rojcyk/viewports-client/issues">Support</FooterLink>
+        </Footer>
 
         <UpdateBanner update={this.state.update} />
 
