@@ -23,7 +23,7 @@ declare namespace Client {
   type InitData = {
     cacheValid: boolean
     viewports: ViewportsData
-    region: RegionCode | null
+    region: RegionCode
   }
 
   type AppState = {
