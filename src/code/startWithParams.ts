@@ -1,7 +1,9 @@
 import resizeSelection from './resizeSelection'
 
 // Starting the plugin in parameter mode.
-export default async (viewports: Client.ViewportsData, region: Client.RegionCode) => {
+export default async (initData: Client.InitData) => {
+  const { viewports, region } = initData
+
   console.log('[Viewports] Initiating parameter listeners')
 
   // The 'change' event listens for text change in the Quick Actions box.
@@ -28,16 +30,18 @@ export default async (viewports: Client.ViewportsData, region: Client.RegionCode
   })
 
   // When the user finishes entering parameters, the 'run' event is fired.
-  figma.parameters.on('run', (parameters: ParameterValues) => {
+  figma.on('run', (event) => {
+    console.log(event)
+
     console.log('[Viewports] Running a quick action')
     console.log('[Viewports] With the following parameters')
-    console.log(parameters)
+    // console.log(parameters)
 
-    const platform = parameters.platform as Client.PlatformCode
-    const market = parameters.market as Client.RegionCode
-    const view = viewports[platform][market][0].display
+    // const platform = parameters.platform as Client.PlatformCode
+    // const market = parameters.market as Client.RegionCode
+    // const view = viewports[platform][market][0].display
 
-    resizeSelection(view.width, view.height)
+    // resizeSelection(view.width, view.height)
 
     figma.closePlugin()
   })
