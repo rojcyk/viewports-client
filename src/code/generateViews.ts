@@ -1,3 +1,6 @@
+// TOok heavy inspiration and copied stum stuff from Brian Lovin
+// https://github.com/brianlovin/figma-responsify/blob/main/src/createAndPlace.ts
+
 interface CreateAndPlaceProps {
   view: Client.Viewport,
   views: Client.Viewport[],
