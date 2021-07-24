@@ -50,7 +50,7 @@ export const HeaderBackground = styled.div<{ isExpanded: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
-  transition: all 300ms ease-out;
+  transition: all 200ms ease-out;
 
   ${({ isExpanded }) =>
     isExpanded
