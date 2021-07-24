@@ -28,21 +28,4 @@ export default async (initData: Client.InitData) => {
         return
     }
   })
-
-  // When the user finishes entering parameters, the 'run' event is fired.
-  figma.on('run', (event) => {
-    console.log(event)
-
-    console.log('[Viewports] Running a quick action')
-    console.log('[Viewports] With the following parameters')
-    // console.log(parameters)
-
-    // const platform = parameters.platform as Client.PlatformCode
-    // const market = parameters.market as Client.RegionCode
-    // const view = viewports[platform][market][0].display
-
-    // resizeSelection(view.width, view.height)
-
-    figma.closePlugin()
-  })
 }
