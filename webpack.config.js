@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const dotenv = require('dotenv')
 const InlineChunkHtmlPlugin = require('./vendor/inlinePlugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = (e, argv) => {
   const env = dotenv.config({ path: '.env' }).parsed
@@ -52,6 +53,7 @@ module.exports = (e, argv) => {
 
     // Tells Webpack to generate "ui.html" and to inline "ui.ts" into it
     plugins: [
+      // new BundleAnalyzerPlugin(),
       new webpack.DefinePlugin(envKeys), // This sets up env variables
       new HtmlWebpackPlugin({
         template: './src/ui/ui.html',
