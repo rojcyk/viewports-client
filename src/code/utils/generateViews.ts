@@ -1,3 +1,5 @@
+import parseSelectedNodes from './parseSelectedNodes'
+
 // Took heavy inspiration and copied stum stuff from Brian Lovin
 // https://github.com/brianlovin/figma-responsify/blob/main/src/createAndPlace.ts
 
@@ -66,4 +68,25 @@ export function createAndPlaceFrame(props: CreateAndPlaceProps) {
   }
 }
 
-export default createAndPlaceFrame
+export const generateViews = (views: Client.Viewport[]) => {
+  const selectedNode = parseSelectedNodes(figma.currentPage.selection)
+  if (selectedNode === null) return
+
+  let frames: SceneNode[] = []
+
+  views.forEach((view: Client.Viewport, index: number) => {
+    frames.push(createAndPlaceFrame({
+      view,
+      views,
+      index,
+      selectedNode
+    }))
+  })
+
+  figma.currentPage.selection = frames
+  figma.viewport.scrollAndZoomIntoView(frames)
+
+  return frames
+}
+
+export default generateViews
