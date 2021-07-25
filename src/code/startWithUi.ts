@@ -13,7 +13,10 @@ const { selection } = currentPage
 
 const parseSelection = (nodes: readonly SceneNode[]) => {
   const oneSelected = nodes.length > 0
-  if (!oneSelected) return null
+  if (!oneSelected) {
+    figma.notify(' ⚡️ You need to select something first')
+    return null
+  }
 
   const firstSelected = nodes[0]
 
@@ -21,18 +24,20 @@ const parseSelection = (nodes: readonly SceneNode[]) => {
     case 'FRAME':
     case 'COMPONENT':
     case 'INSTANCE':
+    case 'RECTANGLE':
+    case 'BOOLEAN_OPERATION':
+    case 'GROUP':
+    case 'SLICE':
       return firstSelected
     default:
+      figma.notify(`⚡️ The layer type ${firstSelected.type} is not supported.`)
       return null
   }
 }
 
 const generateViews = (views: Client.Viewport[]) => {
   const selectedNode = parseSelection(selection)
-  if (!selectedNode){ 
-    figma.notify('You need to select something first ⚡️')
-    return
-  }
+  if (selectedNode === null) return
 
   let frames: SceneNode[] = []
 

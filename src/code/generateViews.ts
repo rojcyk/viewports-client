@@ -1,4 +1,4 @@
-// TOok heavy inspiration and copied stum stuff from Brian Lovin
+// Took heavy inspiration and copied stum stuff from Brian Lovin
 // https://github.com/brianlovin/figma-responsify/blob/main/src/createAndPlace.ts
 
 interface CreateAndPlaceProps {
@@ -8,7 +8,14 @@ interface CreateAndPlaceProps {
   index: number
 }
 
-type SelectedNode = FrameNode | ComponentNode | InstanceNode
+type SelectedNode =
+  FrameNode |
+  ComponentNode |
+  InstanceNode |
+  RectangleNode |
+  BooleanOperationNode |
+  GroupNode |
+  SliceNode
 
 const placeFrame = (frame: SelectedNode, props: CreateAndPlaceProps) => {
   const { view, views, selectedNode, index } = props
@@ -34,17 +41,20 @@ const placeFrame = (frame: SelectedNode, props: CreateAndPlaceProps) => {
 export function createAndPlaceFrame(props: CreateAndPlaceProps) {  
   const { selectedNode } = props
 
+  // It is probably allright to limit it to these
   switch (selectedNode.type) {
+    case 'BOOLEAN_OPERATION':
+    case 'RECTANGLE':
     case 'FRAME':
+    case 'GROUP':
+    case 'SLICE':
       const frame = selectedNode.clone()
       placeFrame(frame, props)
       return frame
-
     case 'COMPONENT':
       const component = selectedNode.createInstance()
       placeFrame(component, props)
       return component
-
     case 'INSTANCE':
       const instance = selectedNode.clone()
       placeFrame(instance, props)
