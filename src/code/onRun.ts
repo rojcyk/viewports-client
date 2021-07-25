@@ -41,17 +41,17 @@ figma.on('run', async ({ command, parameters }) => {
   const cacheValid = viewports && !shouldCheckCache ? true : false
 
   /* Initial data construction */
-  // const initData: Client.InitData = {
-  //   cacheValid,
-  //   viewports,
-  //   region: region ? region : 'ww'
-  // }
-
   const initData: Client.InitData = {
-    cacheValid: false,
-    viewports: undefined,
-    region: 'ww'
+    cacheValid,
+    viewports,
+    region: region ? region : 'ww'
   }
+
+  // const initData: Client.InitData = {
+  //   cacheValid: false,
+  //   viewports: undefined,
+  //   region: 'ww'
+  // }
 
   // if (parameters) {
   //   await startWithParams(initData)
@@ -72,7 +72,7 @@ figma.on('run', async ({ command, parameters }) => {
       if (!initData.cacheValid) {
         launchUI(initData, '⚡️ Launching UI to download the data.')
       } else {
-        generateViews(viewports[platform][region])
+        generateViews(viewports[platform][initData.region])
         figma.closePlugin()
       }
       break
