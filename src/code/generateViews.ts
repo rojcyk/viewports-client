@@ -15,7 +15,9 @@ type SelectedNode =
   RectangleNode |
   BooleanOperationNode |
   GroupNode |
-  SliceNode
+  SliceNode |
+  TextNode |
+  VectorNode
 
 const placeFrame = (frame: SelectedNode, props: CreateAndPlaceProps) => {
   const { view, views, selectedNode, index } = props
@@ -48,6 +50,8 @@ export function createAndPlaceFrame(props: CreateAndPlaceProps) {
     case 'FRAME':
     case 'GROUP':
     case 'SLICE':
+    case 'TEXT':
+    case 'VECTOR':
       const frame = selectedNode.clone()
       placeFrame(frame, props)
       return frame

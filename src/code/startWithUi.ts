@@ -28,6 +28,8 @@ const parseSelection = (nodes: readonly SceneNode[]) => {
     case 'BOOLEAN_OPERATION':
     case 'GROUP':
     case 'SLICE':
+    case 'TEXT':
+    case 'VECTOR':
       return firstSelected
     default:
       figma.notify(`⚡️ The layer type ${firstSelected.type} is not supported.`)
