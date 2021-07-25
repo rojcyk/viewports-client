@@ -2,7 +2,6 @@ import * as React from 'react'
 import io from 'figmaio/ui'
 
 import { Section } from '../section'
-import { PlatformToggle } from './platformToggle'
 import { Viewport } from '../viewport/index'
 import { DISPLAY_UPDATE } from '../../constants/events'
 import { Header } from '../header'
@@ -32,17 +31,11 @@ export class Platform extends Section<PlatformProps> {
        label={this.props.platform}
        toggle={this.toogleExpand}
       />
-      // <PlatformToggle
-      //   label={this.props.platform}
-      //   expanded={this.state.expanded}
-      //   customAction={this.toogleExpand}
-      //   platform={this.props.platform}
-      // />
     )
   }
 
   public renderContent(): React.ReactNode {
-    if (this.props.data === undefined) return null
+    if (this.props.data === undefined) return <div />
     const list = this.props.data.map((viewport: Client.Viewport, i: number) => {
       return (
         <Viewport 
