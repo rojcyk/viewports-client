@@ -27,6 +27,7 @@ const Footer = styled.p`
   text-align: center;
   padding-left: 16px;
   padding-right: 16px;
+  padding-bottom: 16px;
   color: ${colors.ink.tertiary};
 `
 

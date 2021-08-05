@@ -1,3 +1,5 @@
 export const LAST_CHECK = 'lastChecked'
 export const VIEWPORTS = 'viewports'
 export const REGION = 'region'
+export const LAST_REGION = 'lastRegion'
+export const LAST_PLATFORM = 'lastPlatform'

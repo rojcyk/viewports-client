@@ -21,10 +21,9 @@ export default (width: number, height: number) => {
 
     figma.viewport.scrollAndZoomIntoView(figma.currentPage.selection)
   } else {
-    // figma.notify('You need to select something first ⚡️')
     let newFrame = figma.createFrame()
+    newFrame.name = `${width}x${height}`
     newFrame.resize(width, height)
-    // newFrame.name 
     figma.viewport.scrollAndZoomIntoView([newFrame])
   }
 }
