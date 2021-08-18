@@ -19,7 +19,7 @@ const RegionToogleStyle = styled.div<{
   width: 100%;
   min-height: 30px;
 
-  padding-left: 12px;
+  padding-left: 16px;
   padding-right: 12px;
   padding-top: ${props => (props.expanded ? '14px' : '8px')};
   padding-bottom: ${props => (props.expanded ? '14px' : '8px')};
@@ -51,7 +51,7 @@ export const RegionToogle = (props: {
       expanded={props.expanded}
       onClick={props.customAction}
     >
-      <Arrow expanded={props.expanded} />
+      <Arrow direction={props.expanded ? "down" : "right"} />
       {label}
     </RegionToogleStyle>
   )

@@ -15,5 +15,6 @@ export const colors = {
   ink: {
     primary: '#333333',
     secondary: '#757575',
+    tertiary: '#B7B7B7',
   },
 }

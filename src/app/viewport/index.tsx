@@ -5,19 +5,28 @@ import { colors } from '../../constants/tokens'
 import { DisplayPreview } from './displayPreview'
 import { OSBadge } from './osBadge'
 
+const DisplayWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding-right: 8px;
+  transition: all 200ms ease-out;
+`
+
 const DisplayStyle = styled.li<{
-  width: number
+  width: number,
   height: number
 }>`
   cursor: pointer;
-  display: flex;
-  align-items: center;
   user-select: none;
-
-  padding: 2px 12px;
+  display: block;
+  padding: 4px 8px;
 
   &:hover {
-    background-color: rgba(24, 160, 251, 0.06);
+    div${DisplayWrapper} {
+      background-color: rgba(24, 160, 251, 0.06);
+      transition: all 200ms ease-out;
+    }
   }
 `
 
@@ -56,7 +65,7 @@ export const Viewport = (props: {
   height: number
   key: number
   trigger: any
-  platform: string
+  platform: Client.PlatformCode
   share: string
 }) => {
   const os = props.platform === 'mobile' ? mobileOs(props.width, props.height) : 0
@@ -65,16 +74,22 @@ export const Viewport = (props: {
     <DisplayStyle
       width={props.width}
       height={props.height}
-      onClick={props.trigger}
-    >
-      <DisplayPreview height={props.height} width={props.width} os={os} />
-      <Dimensions>
-        {props.width}x{props.height}
-      </Dimensions>
+      onClick={props.trigger}>
 
-      {props.platform === 'mobile' && (<OSBadge os={os} />)}
+      <DisplayWrapper>
+        <DisplayPreview
+          height={props.height}
+          width={props.width}
+          platform={props.platform} />
 
-      <MarketShare>{props.share}%</MarketShare>
+        <Dimensions>
+          {props.width}x{props.height}
+        </Dimensions>
+
+        {props.platform === 'mobile' && (<OSBadge os={os} />)}
+
+        <MarketShare>{props.share}%</MarketShare>
+      </DisplayWrapper>
     </DisplayStyle>
   )
 }

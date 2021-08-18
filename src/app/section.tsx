@@ -9,8 +9,8 @@ import { colors, animationSpeed } from '../constants/tokens'
 // ******************************** //
 
 export interface SectionProps {
-  trigger: Function
   expanded?: boolean
+  trigger?: Function
 }
 
 interface SectionState {
@@ -18,7 +18,6 @@ interface SectionState {
   height: number | string,
   toggle?: any,
   content?: any
-  bg?: string
 }
 
 // ******************************** //
@@ -37,7 +36,7 @@ const Wrapper = styled.div<{
 const InnerWrapper = styled.div<{
   bg: string
 }>`
-  background-color: ${props => props.bg};
+  background-color: ${props => (props.bg)};
 `
 
 // ******************************** //
@@ -49,13 +48,13 @@ export class Section<T extends SectionProps> extends React.Component<T, SectionS
     super(props)
     this.state = {
       expanded: props.expanded ? props.expanded : false,
-      height: 0,
+      height: 0
     }
   }
 
   public selectionPress = (e: React.MouseEvent): void => {
     this.toogleExpand()
-    this.props.trigger(e)
+    if (this.props.trigger) this.props.trigger(e)
   }
 
   public toogleExpand = (): void => {
@@ -71,7 +70,6 @@ export class Section<T extends SectionProps> extends React.Component<T, SectionS
       })
     }
   }
-
 
   public background(): string {
     return 'white'

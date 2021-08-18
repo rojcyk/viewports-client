@@ -1,6 +1,6 @@
 import io from 'figmaio/code'
-import { REGION_UPDATE } from '../constants/events'
-import { REGION } from '../constants/storageProps'
+import { REGION_UPDATE } from '../../constants/events'
+import { REGION } from '../../constants/storageProps'
 
 export default async (): Promise<void> => {
   io.on(

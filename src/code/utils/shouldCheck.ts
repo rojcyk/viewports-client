@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { LAST_CHECK } from '../constants/storageProps'
+import { LAST_CHECK } from '../../constants/storageProps'
 
 export default async (): Promise<boolean> => {
   // Getting the last check date from Figma storage
