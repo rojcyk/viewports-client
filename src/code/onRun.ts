@@ -11,6 +11,18 @@ import resizeListener from './listeners/resizeListener'
 
 const COPY_NO_DATA = '⚡️ Plugin needs to launch UI to download the data.'
 
+const pickMarket = (market: string) => {
+  switch (market) {
+    case 'World wide': return 'ww'
+    case 'Africa': return 'af'
+    case 'Asia': return 'as'
+    case 'Europe': return 'eu'
+    case 'Oceania': return 'oc'
+    case 'North America': return 'na'
+    case 'South America': return 'sa'
+  }
+}
+
 const launchUI = (data: Client.InitData, message?: string) => {
   figma.showUI(__html__, {
     width: 300,
@@ -73,7 +85,7 @@ figma.on('run', async (props) => {
     case 'resize':
       if (viewports) {
         if (props?.parameters) {
-          const selected_region = props?.parameters.region as Client.RegionCode
+          const selected_region = pickMarket(props?.parameters.region) as Client.RegionCode
           const selected_platform = props?.parameters.platform as Client.PlatformCode
 
           await figma.clientStorage.setAsync(LAST_REGION, selected_region)
