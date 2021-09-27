@@ -85,7 +85,7 @@ figma.on('run', async (props) => {
     case 'resize':
       if (viewports) {
         if (props?.parameters) {
-          const selected_region = pickMarket(props?.parameters.region) as Client.RegionCode
+          const selected_region = props?.parameters.region as Client.RegionCode
           const selected_platform = props?.parameters.platform as Client.PlatformCode
 
           await figma.clientStorage.setAsync(LAST_REGION, selected_region)

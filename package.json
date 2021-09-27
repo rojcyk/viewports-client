@@ -14,14 +14,14 @@
     "build": "npx webpack --mode=production"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.19.0",
-    "@types/node": "^16.4.1",
-    "@types/react": "^17.0.15",
+    "@figma/plugin-typings": "^1.35.0",
+    "@types/node": "^16.10.1",
+    "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
-    "@types/styled-components": "^5.1.11",
-    "axios": "^0.21.1",
-    "css-loader": "^6.2.0",
-    "dayjs": "^1.10.6",
+    "@types/styled-components": "^5.1.14",
+    "axios": "^0.21.4",
+    "css-loader": "^6.3.0",
+    "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
     "figmaio": "^0.2.10",
     "html-webpack-plugin": "^5.3.2",
@@ -29,11 +29,11 @@
     "react-animate-height": "^2.0.23",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
-    "styled-components": "^5.3.0",
-    "ts-loader": "^9.2.4",
-    "typescript": "^4.3.5",
+    "styled-components": "^5.3.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.3",
     "url-loader": "^4.1.1",
-    "webpack": "^5.46.0",
-    "webpack-cli": "^4.7.2"
+    "webpack": "^5.54.0",
+    "webpack-cli": "^4.8.0"
   }
 }
